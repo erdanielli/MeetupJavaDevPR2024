@@ -1,11 +1,20 @@
 package study.meetup.springuicada.application;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.validation.constraints.*;
+import study.meetup.springuicada.application.EfetuarTransferencia.Output.TransacaoEfetuada.ComSaldoNaoNegativo;
+import study.meetup.springuicada.application.EfetuarTransferencia.Output.TransacaoEfetuada.UtilizandoLimite;
+import study.meetup.springuicada.application.EfetuarTransferencia.Output.TransacaoNaoAutorizada.ContaDesconhecida;
+import study.meetup.springuicada.application.EfetuarTransferencia.Output.TransacaoNaoAutorizada.SaldoInsuficiente;
 import study.meetup.springuicada.application.util.UseCase;
 import study.meetup.springuicada.application.util.UseCaseOutput;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.EXISTING_PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
 /// ## Efetua transferência entre duas contas
 /// - Java 23 introduziu suporte ao Markdown para JavaDoc.
@@ -21,6 +30,14 @@ public interface EfetuarTransferencia extends UseCase<EfetuarTransferencia.Input
                  @Digits(integer = 9, fraction = 2, message = "VALOR_INVALIDO") Double valor) {
     }
 
+    @JsonTypeInfo(use = NAME, include = EXISTING_PROPERTY, property = "code", visible = true)
+    @JsonSubTypes({
+            @JsonSubTypes.Type(value = ContaDesconhecida.class, name = "CONTA_DESCONHECIDA"),
+            @JsonSubTypes.Type(value = SaldoInsuficiente.class, name = "SALDO_INSUFICIENTE"),
+            @JsonSubTypes.Type(value = Output.OperacaoAgendada.class, name = "OPERACAO_AGENDADA"),
+            @JsonSubTypes.Type(value = ComSaldoNaoNegativo.class, name = "TRANSACAO_EFETUADA"),
+            @JsonSubTypes.Type(value = UtilizandoLimite.class, name = "TRANSACAO_EFETUADA_UTILIZANDO_LIMITE")
+    })
     sealed interface Output extends UseCaseOutput {
 
         sealed interface TransacaoNaoAutorizada extends Output {
