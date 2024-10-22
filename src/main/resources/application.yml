@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: meetup2024
+  datasource:
+    hikari:
+      schema: myschema
+      maximum-pool-size: 2
+      pool-name: pg-myschema
+  flyway:
+    default-schema: myschema
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
