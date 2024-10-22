@@ -3,15 +3,15 @@ package study.meetup.springuicada.application;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import study.meetup.springuicada.application.util.UseCase;
 import study.meetup.springuicada.application.util.UseCaseOutput;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.function.Function;
 
 /// Recupera o extrato completo da conta
-public interface ExibirExtrato extends Function<ExibirExtrato.Input, ExibirExtrato.Output> {
+public interface ExibirExtrato extends UseCase<ExibirExtrato.Input, ExibirExtrato.Output> {
 
     record Input(@NotNull(message = "CONTA_REQUERIDA") @Email(message = "CONTA_INVALIDA") String conta) {
     }

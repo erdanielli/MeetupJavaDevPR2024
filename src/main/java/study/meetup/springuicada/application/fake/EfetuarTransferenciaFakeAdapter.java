@@ -18,7 +18,7 @@ public final class EfetuarTransferenciaFakeAdapter implements EfetuarTransferenc
     }
 
     @Override
-    public Output apply(Input input) {
+    public Output execute(Input input) {
         // valida a existencia das contas
         ContaFake contaOrigem = contaFakeProvider.apply(input.origem());
         if (contaOrigem == null) return new ContaDesconhecida(input.origem());

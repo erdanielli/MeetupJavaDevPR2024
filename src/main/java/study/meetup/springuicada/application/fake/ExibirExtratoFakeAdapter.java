@@ -13,7 +13,7 @@ public final class ExibirExtratoFakeAdapter implements ExibirExtrato {
     }
 
     @Override
-    public Output apply(Input input) {
+    public Output execute(Input input) {
         // valida a existencia das contas
         ContaFake conta = contaFakeProvider.apply(input.conta());
         if (conta == null) return new ContaDesconhecida(input.conta());

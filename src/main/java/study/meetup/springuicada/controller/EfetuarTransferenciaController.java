@@ -21,7 +21,7 @@ public class EfetuarTransferenciaController {
 
     @PostMapping("/transferir")
     ResponseEntity<Output> execute(@RequestBody @Valid EfetuarTransferencia.Input input) {
-        return switch (usecase.apply(input)) {
+        return switch (usecase.execute(input)) {
             case OperacaoAgendada output -> ResponseEntity.status(200).body(output);
             case TransacaoEfetuada output -> ResponseEntity.status(200).body(output);
             case TransacaoNaoAutorizada output -> ResponseEntity.status(400).body(output);

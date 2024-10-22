@@ -1,17 +1,17 @@
 package study.meetup.springuicada.application;
 
 import jakarta.validation.constraints.*;
+import study.meetup.springuicada.application.util.UseCase;
 import study.meetup.springuicada.application.util.UseCaseOutput;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.function.Function;
 
 /// ## Efetua transferência entre duas contas
 /// - Java 23 introduziu suporte ao Markdown para JavaDoc.
 /// - Utilize esse recurso para documentar o caso de uso
 ///   - Fluxo principal e alternativos
-public interface EfetuarTransferencia extends Function<EfetuarTransferencia.Input, EfetuarTransferencia.Output> {
+public interface EfetuarTransferencia extends UseCase<EfetuarTransferencia.Input, EfetuarTransferencia.Output> {
 
     record Input(@NotNull(message = "ORIGEM_REQUERIDA") @Email(message = "ORIGEM_INVALIDA") String origem,
                  @NotNull(message = "DESTINO_REQUERIDO") @Email(message = "DESTINO_INVALIDO") String destino,

@@ -19,7 +19,7 @@ public class ExibirExtratoController {
 
     @PostMapping("/extrato")
     ResponseEntity<ExibirExtrato.Output> execute(@RequestBody @Valid ExibirExtrato.Input input) {
-        return switch (usecase.apply(input)) {
+        return switch (usecase.execute(input)) {
             case Extrato output -> ResponseEntity.status(200).body(output);
             case ContaDesconhecida output -> ResponseEntity.status(400).body(output);
         };
