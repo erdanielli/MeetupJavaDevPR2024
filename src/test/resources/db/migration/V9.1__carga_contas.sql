@@ -1,0 +1,1 @@
+insert into conta (email, limite, saldo) values ('rebola@gmail.com', 100000, 0), ('eduardo@gmail.com', 100000, 0);
