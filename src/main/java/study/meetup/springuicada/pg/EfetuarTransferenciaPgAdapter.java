@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import study.meetup.springuicada.application.EfetuarTransferencia;
-import study.meetup.springuicada.domain.BRL;
+import study.meetup.springuicada.application.util.BRL;
 
 import java.time.LocalDate;
 

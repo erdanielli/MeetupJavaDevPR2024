@@ -5,7 +5,7 @@ import study.meetup.springuicada.application.ExibirExtrato.Output.Operacao.Agend
 import study.meetup.springuicada.application.ExibirExtrato.Output.Operacao.Agendada.DebitoAgendado;
 import study.meetup.springuicada.application.ExibirExtrato.Output.Operacao.Efetuada.Credito;
 import study.meetup.springuicada.application.ExibirExtrato.Output.Operacao.Efetuada.Debito;
-import study.meetup.springuicada.domain.BRL;
+import study.meetup.springuicada.application.util.BRL;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

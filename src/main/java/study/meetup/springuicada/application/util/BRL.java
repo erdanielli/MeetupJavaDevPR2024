@@ -1,4 +1,4 @@
-package study.meetup.springuicada.domain;
+package study.meetup.springuicada.application.util;
 
 import java.math.BigDecimal;
 
