@@ -8,6 +8,8 @@ spring:
       pool-name: pg-myschema
   flyway:
     default-schema: myschema
+    clean-on-validation-error: true # dev only
+    clean-disabled: false # dev only
   jackson:
     deserialization:
       fail-on-unknown-properties: false
