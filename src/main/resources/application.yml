@@ -1,6 +1,30 @@
 spring:
   application:
     name: meetup2024
+  profiles:
+    group:
+      server:
+        - common
+        - config-server
+      developer:
+        - common
+        - local
+    active: developer
+
+---
+# spring-config-server overrides
+spring:
+  config:
+    activate:
+      on-profile: config-server
+    import: "configserver:"
+
+---
+# default environment values
+spring:
+  config:
+    activate:
+      on-profile: common
   datasource:
     hikari:
       schema: myschema
@@ -8,8 +32,49 @@ spring:
       pool-name: pg-myschema
   flyway:
     default-schema: myschema
-    clean-on-validation-error: true # dev only
-    clean-disabled: false # dev only
-  jackson:
-    deserialization:
-      fail-on-unknown-properties: false
+  main:
+    banner-mode: off
+  mvc:
+    servlet:
+      load-on-startup: 1
+  threads:
+    virtual:
+      enabled: true
+server:
+  shutdown: graceful
+  error:
+    whitelabel:
+      enabled: false
+logging:
+  level:
+    root: warn
+    study.meetup: info
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+---
+# local development overrides
+spring:
+  config:
+    activate:
+      on-profile: local
+  cloud:
+    config:
+      enabled: false
+  flyway:
+    clean-on-validation-error: true
+    clean-disabled: false
+server:
+  error:
+    include-binding-errors: always
+    include-stacktrace: always
+    include-exception: true
+logging:
+  pattern:
+    console: "%clr(%d{HH:mm:ss.SSS}){faint} %clr(%5p) %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  level:
+    root: info
+    study.meetup: debug
