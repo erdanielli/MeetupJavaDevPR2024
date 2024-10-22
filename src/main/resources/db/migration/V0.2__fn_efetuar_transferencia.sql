@@ -77,6 +77,8 @@ end;
 $$
     language plpgsql;
 
+grant execute on function efetuar_transferencia to myschema_user;
+
 create or replace function efetuar_agendamento(email_origem varchar,
                                                email_destino varchar,
                                                valor bigint,
@@ -106,3 +108,5 @@ begin
 end;
 $$
     language plpgsql;
+
+grant execute on function efetuar_agendamento to myschema_user;

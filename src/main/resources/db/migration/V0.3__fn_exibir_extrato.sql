@@ -39,3 +39,5 @@ begin
 end;
 $$
     language plpgsql;
+
+grant execute on function exibir_extrato to myschema_user;
