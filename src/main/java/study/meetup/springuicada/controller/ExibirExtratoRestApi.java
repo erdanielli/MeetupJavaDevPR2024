@@ -10,10 +10,10 @@ import study.meetup.springuicada.application.ExibirExtrato.Output.ContaDesconhec
 import study.meetup.springuicada.application.ExibirExtrato.Output.Extrato;
 
 @RestController
-public class ExibirExtratoController {
+public class ExibirExtratoRestApi {
     private final ExibirExtrato usecase;
 
-    public ExibirExtratoController(ExibirExtrato useCase) {
+    public ExibirExtratoRestApi(ExibirExtrato useCase) {
         this.usecase = useCase;
     }
 

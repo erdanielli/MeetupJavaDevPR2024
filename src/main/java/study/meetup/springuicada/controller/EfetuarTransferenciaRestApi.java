@@ -12,10 +12,10 @@ import study.meetup.springuicada.application.EfetuarTransferencia.Output.Transac
 import study.meetup.springuicada.application.EfetuarTransferencia.Output.TransacaoNaoAutorizada;
 
 @RestController
-public class EfetuarTransferenciaController {
+public class EfetuarTransferenciaRestApi {
     private final EfetuarTransferencia usecase;
 
-    public EfetuarTransferenciaController(EfetuarTransferencia useCase) {
+    public EfetuarTransferenciaRestApi(EfetuarTransferencia useCase) {
         this.usecase = useCase;
     }
 
