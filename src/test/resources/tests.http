@@ -1,0 +1,59 @@
+// antes de começar, substitua a data "2024-10-23" pela data atual
+
+### transferir 500,00 agora de rebola p/ eduardo
+POST http://localhost:8080/transferir
+Accept: application/json
+Content-Type: application/json
+
+{
+  "origem": "rebola@gmail.com",
+  "destino": "eduardo@gmail.com",
+  "data": "2024-10-23",
+  "valor": 500
+}
+
+
+### transferir 200,00 agora de eduardo p/ rebola
+POST http://localhost:8080/transferir
+Accept: application/json
+Content-Type: application/json
+
+{
+  "origem": "eduardo@gmail.com",
+  "destino": "rebola@gmail.com",
+  "data": "2024-10-23",
+  "valor": 200
+}
+
+### agendar transferencia de 400,00 de rebola p/ eduardo p/ sábado (26, deve mudar para 28)
+### altere as datas!
+POST http://localhost:8080/transferir
+Accept: application/json
+Content-Type: application/json
+
+{
+  "origem": "rebola@gmail.com",
+  "destino": "eduardo@gmail.com",
+  "data": "2024-10-26",
+  "valor": 400
+}
+
+
+### extrato do eduardo
+POST http://localhost:8080/extrato
+Accept: application/json
+Content-Type: application/json
+
+{
+  "conta": "eduardo@gmail.com"
+}
+
+### Extrato do rebola
+POST http://localhost:8080/extrato
+Accept: application/json
+Content-Type: application/json
+
+{
+  "conta": "rebola@gmail.com"
+}
+
